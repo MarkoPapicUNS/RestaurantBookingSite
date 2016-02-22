@@ -1,0 +1,11 @@
+<div ng-controller="LoginCtrl as vm">
+    <h2>Login</h2>
+    <form novalidate class="simple-form">
+        Name: <input type="text" ng-model="user.name" /><br />
+        Password: <input type="password" ng-model="user.password" /><br />
+        <input type="submit" ng-click="vm.login(user)" value="Save" />
+    </form>
+    <label>{{vm.loginErrorMessage}}</label>
+    <pre>user = {{user | json}}</pre>
+</div>
+</div>

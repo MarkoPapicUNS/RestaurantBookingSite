@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurant Booking</title>
+</head>
+<body ng-app="app">
+<h1>Restaurant Booking</h1>
+<div ng-view></div>
+
+<!-- Library Scripts -->
+<script src="libs/angular.js"></script>
+<script src="libs/angular-route.js"></script>
+<script src="libs/angular-cookies.js"></script>
+
+<!-- Application Scripts -->
+<script src="app/app.js"></script>
+<script src="app/shared/shared.module.js"></script>
+<script src="app/shared/dataservice.js"></script>
+<script src="app/shared/cookieservice.js"></script>
+<script src="app/shared/loginservice.js"></script>
+<script src="app/shared/redirectService.js"></script>
+<script src="app/guest/guest.module.js"></script>
+<script src="app/guest/GuestCtrl.js"></script>
+<script src="app/login/login.module.js"></script>
+<script src="app/login/LoginCtrl.js"></script>
+
+</body>
+</html>

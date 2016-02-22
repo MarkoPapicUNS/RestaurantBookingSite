@@ -1,0 +1,18 @@
+<div ng-controller="GuestCtrl as vm">
+    <h2>{{vm.guest.DisplayName}}</h2>
+    <div> <!--maybe section or something like that-->
+        <h3>Personal info</h3>
+        <label>First name: {{vm.guest.FirstName}}</label> <!--maybe some other tag-->
+        <label>Last name: {{vm.guest.LastName}}</label>
+        <label>Street: {{vm.guest.Address.Street}} {{vm.guest.Address.Number}}</label>
+        <label>City: {{vm.guest.Address.City}} {{vm.guest.Address.Zip}}</label>
+        <label>Gender: {{vm.guest.Gender}}</label>
+    </div>
+    <div>
+        <h3>Friends</h3>
+        <ul>
+            <li ng-repeat="friend in vm.guest.Friends">Coffee</li>
+        </ul>
+    </div>
+</div>
+</div>
