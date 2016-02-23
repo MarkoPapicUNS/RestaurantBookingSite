@@ -1,17 +1,105 @@
 <div ng-controller="GuestCtrl as vm">
     <h2>{{vm.guest.DisplayName}}</h2>
-    <div> <!--maybe section or something like that-->
+    <div class="guest_personal_info"> <!--maybe section or something like that-->
         <h3>Personal info</h3>
-        <label>First name: {{vm.guest.FirstName}}</label> <!--maybe some other tag-->
-        <label>Last name: {{vm.guest.LastName}}</label>
-        <label>Street: {{vm.guest.Address.Street}} {{vm.guest.Address.Number}}</label>
-        <label>City: {{vm.guest.Address.City}} {{vm.guest.Address.Zip}}</label>
-        <label>Gender: {{vm.guest.Gender}}</label>
+        <table>
+            <tr>
+                <td>First name:</td>
+                <td>{{vm.guest.FirstName}}</td>
+            </tr>
+            <tr>
+                <td>Last name:</td>
+                <td>{{vm.guest.LastName}}</td>
+            </tr>
+            <tr>
+                <td>Street:</td>
+                <td>{{vm.guest.Address.Street}} {{vm.guest.Address.Number}}</td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td>{{vm.guest.Address.City}} {{vm.guest.Address.Zip}}</td>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td>{{vm.guest.Gender}}</td>
+            </tr>
+        </table>
     </div>
-    <div>
+    <div class="guest_friends" ng-show="vm.guest.Relation == 0 || vm.guest.Relation == 1">
         <h3>Friends</h3>
         <ul>
-            <li ng-repeat="friend in vm.guest.Friends">Coffee</li>
+            <li ng-repeat="friend in vm.guest.Friends">{{friend.DisplayName}}</li>
+        </ul>
+    </div>
+    <hr class="vertical_separator">
+    <div class="guest_requests" ng-show="vm.guest.Relation == 0">
+        <h4>Pending requests</h4>
+        <table>
+            <tr ng-repeat="request in vm.guest.FriendRequests">
+                <td>{{request.DisplayName}}</td>
+                <td><button ng-click="vm.AcceptRequest(request.Username)">Accept</button></td>
+                <td><button ng-click="vm.DeclineRequest(request.Username)">Decline</button></td>
+            </tr>
+        </table>
+    </div>
+    <div class="guest_sent_requests" ng-show="vm.uest.Relation == 0">
+        <h4>Sent requests</h4>
+        <ul>
+            <li ng-repeat="sentRequest in vm.guest.SentFriendRequests">{{sentRequest.DisplayName}}</li>
+        </ul>
+    </div>
+    <div class="guest_reservations" ng-show="vm.guest.Relation == 0 || vm.guest.Relation == 1">
+        <h4>Reservations</h4>
+        <table ng-repeat="reservation in vm.guest.Reservations">
+            <tr>
+                <td>Restaurant:</td>
+                <td>{{reservation.RestaurantName}}</td>
+            </tr>
+            <tr>
+                <td>Table number:</td>
+                <td>{{reservation.TableNumber}}</td>
+            </tr>
+            <tr>
+                <td>Active:</td>
+                <td>{{reservation.DidShowUp}}</td>
+            </tr>
+            <tr>
+                <td>Time:</td>
+                <td>{{reservation.Time}}</td>
+            </tr>
+            <tr>
+                <td>Hours:</td>
+                <td>{{reservation.Hours}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="guest_ratings" ng-show="vm.guest.Relation == 0 || vm.guest.Relation == 1">
+        <h4>Ratings</h4>
+        <!--<ul ng-repeat="rating in vm.guest.Ratings">
+            <li> <div class="rating">
+                <span ng-class="{checked: {{rating.Rating == 1}}}"><input type="radio" name="rating" id="str5" value="5" ng-model="confirmed" ng-change="vm.RatingChange(confirmed)" ng-click="vm.RatingClick()"><label for="str5"></label></span>
+                <span ng-class="{checked: {{rating.Rating == 2}}}"><input type="radio" name="rating" id="str4" value="4" ng-model="confirmed" ng-change="vm.RatingChange(confirmed)" ng-click="vm.RatingClick()"><label for="str4"></label></span>
+                <span ng-class="{checked: {{rating.Rating == 3}}}"><input type="radio" name="rating" id="str3" value="3" ng-model="confirmed" ng-change="vm.RatingChange(confirmed)" ng-click="vm.RatingClick()"><label for="str3"></label></span>
+                <span ng-class="{checked: {{rating.Rating == 4}}}"><input type="radio" name="rating" id="str2" value="2" ng-model="confirmed" ng-change="vm.RatingChange(confirmed)" ng-click="vm.RatingClick()"><label for="str2"></label></span>
+                <span ng-class="{checked: {{rating.Rating == 5}}}"><input type="radio" name="rating" id="str1" value="1" ng-model="confirmed" ng-change="vm.RatingChange(confirmed)" ng-click="vm.RatingClick()"><label for="str1"></label></span>
+            </div></li>
+        </ul>-->
+        <ul ng-repeat="rating in vm.guest.Ratings">
+            <li>
+                <span>{{rating.RestaurantName}}</span>
+                <span>{{rating.Rating}}</span>
+                <span>{{rating.Comment}}</span>
+                <span>{{rating.Rated}}</span>
+            </li>
+        </ul>
+    </div>
+    <div ng-show="vm.guest.Relation == 0 || vm.guest.Relation == 1">
+        <h4>Visits</h4>
+        <ul ng-repeat="visit in vm.guest.Visits">
+            <li>
+                <span>{{visit.RestaurantName}}</span>
+                <span>{{visit.Time}}</span>
+            </li>
         </ul>
     </div>
 </div>

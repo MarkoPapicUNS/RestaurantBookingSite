@@ -15,7 +15,7 @@
     app.config(["$routeProvider",
         function($routeProvider) {
             $routeProvider.
-            when("/guest", {
+            when("/guest/:guestUsername?", {
                 templateUrl: "app/guest/guestView.html",
                 controller: "GuestCtrl"
             }).

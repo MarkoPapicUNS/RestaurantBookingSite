@@ -66,6 +66,52 @@
             });
         }
 
+        //httpRequest.restCall.post = function(uri, data, successCB, errorCB) //implement this
+
+        httpRequest.restCall.delete = function(uri, successCB, errorCB) {
+            var access_token = cookies.getItem("access_token");
+            var refresh_token_id = cookies.getItem("refresh_token")
+            if (access_token == "null") {
+                redirection.redirect("/login");
+                return;
+            }
+
+            $http({
+                method : "DELETE",
+                url : appSettings.serverPath + uri,
+                headers: {
+                    "Authorization": "Bearer " + access_token
+                }
+            }).then(function successCallback(response) {
+                successCB(response);
+            }, function errorCallback(response) {
+                if (response.status == 401) {
+                    if (refresh_token_id == "null") {
+                        redirection.redirect("/login");
+                        return;
+                    }
+                    if (requestRefreshToken(refresh_token_id)) {
+                        $http({
+                            method : "GET",
+                            url : appSettings.serverPath + uri
+                        }).then(function retrySuccessCallback(response) {
+                            successCB(response);
+                        }, function retryErrorCallback(response) {
+                            if (response.status == 401) {
+                                redirection.redirect("/login");
+                                return;
+                            }
+                            else
+                                errorCB(response);
+                        });
+                    }
+                }
+                else {
+                    errorCB(response);
+                }
+            });
+        }
+
         function requestRefreshToken(refreshTokenId) {
             $http({
                 method: 'POST',
