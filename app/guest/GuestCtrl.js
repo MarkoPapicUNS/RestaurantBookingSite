@@ -16,18 +16,29 @@
         vm.guestUsername = $routeParams.guestUsername;
         vm.requestMessage = "";
 
-        vm.DeclineRequest = function(username) {
-            vm.data.restCall.delete("api/friendship/removefriend/" + username, RequestSuccessCallback, RequestErrorCallback);
-            vm.guest.FriendRequests = vm.guest.FriendRequests.filter(function (el) {
-                return el.Username != username;
-            });
+        vm. AddFriend = function(username) {
+            vm.data.restCall.post("api/friendship/sendfriendrequest", "'" + request.Username + "'", RequestSuccessCallback, RequestErrorCallback);
+            vm.guest.Relation = 3;
         };
+
+        vm.RemoveFriendship = function(username) {
+            vm.data.restCall.delete("api/friendship/removefriend/" + username, GenericSuccessCallback,GenericErrorCallback);
+            if (vm.guest.FriendRequests != null) {
+                vm.guest.FriendRequests = vm.guest.FriendRequests.filter(function (el) {
+                    return el.Username != username;
+                });
+            }
+            vm.guest.Relation = 4;
+        };
+
         vm.AcceptRequest = function(request) {
-            vm.data.restCall.post("api/friendship/acceptfriendrequest", "'" + request.Username + "'", RequestSuccessCallback, RequestErrorCallback);
-            vm.guest.FriendRequests = vm.guest.FriendRequests.filter(function (el) {
-                return el.Username != request.Username;
-            });
-            vm.guest.Friends.push(request);
+            vm.data.restCall.post("api/friendship/acceptfriendrequest", "'" + request.Username + "'", GenericSuccessCallback, GenericErrorCallback);
+            vm.guest.Relation = 1;
+        };
+
+        vm.SendRequest = function(username) {
+            vm.data.restCall.post("api/friendship/sendfriendrequest", "'" + username + "'", GenericSuccessCallback, GenericErrorCallback);
+            vm.guest.Relation = 3;
         };
         /*vm.RatingChange = function(confirmed) {
             console.log(confirmed);
@@ -61,12 +72,13 @@
             console.log("ERROR:" + response.data)
         }
 
-        function RequestSuccessCallback(response) {
-            vm.requestMessage = response.data;
+        function GenericSuccessCallback(response) {
+
+            vm.requestMessage = response.data.Message == null ? response.data : response.data.Message;
         }
 
-        function RequestErrorCallback(response) {
-            vm.requestMessage = response.data;
+        function GenericErrorCallback(response) {
+            vm.requestMessage = response.data.Message == null ? response.data : response.data.Message;
         }
 
         /*function RatingSetup() {

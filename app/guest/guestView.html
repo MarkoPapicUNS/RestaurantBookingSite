@@ -1,4 +1,5 @@
 <div ng-controller="GuestCtrl as vm">
+    <label>{{vm.requestMessage}}</label>
     <h2>{{vm.guest.DisplayName}}</h2>
     <div class="guest_personal_info"> <!--maybe section or something like that-->
         <h3>Personal info</h3>
@@ -25,8 +26,10 @@
             </tr>
         </table>
     </div>
-    <button ng-show="vm.guest.Relation == 2">Add Friend</button>
-    <button ng-show="vm.guest.Relation == 1">Remove Friend</button>
+    <button ng-show="vm.guest.Relation == 4" ng-click="vm.SendRequest(vm.guest.Username)">Add Friend</button>
+    <button ng-show="vm.guest.Relation == 1" ng-click="vm.RemoveFriendship(vm.guest.Username)">Remove Friend</button>
+    <button ng-show="vm.guest.Relation == 3" ng-click="vm.RemoveFriendship(vm.guest.Username)">Cancel Request</button>
+    <button ng-show="vm.guest.Relation == 2" ng-click="vm.AcceptRequest(vm.guest)">Accept Request</button>
     <div class="guest_friends" ng-show="vm.guest.Relation == 0 || vm.guest.Relation == 1">
         <h3>Friends</h3>
         <ul>
@@ -36,12 +39,11 @@
     <hr class="vertical_separator">
     <div class="guest_requests" ng-show="vm.guest.Relation == 0">
         <h4>Pending requests</h4>
-        <label>{{vm.requestMessage}}</label>
         <table>
             <tr ng-repeat="request in vm.guest.FriendRequests">
                 <td><a href="#/guest/{{request.Username}}">{{request.DisplayName}}</a></td>
                 <td><button ng-click="vm.AcceptRequest(request)">Accept</button></td>
-                <td><button ng-click="vm.DeclineRequest(request.Username)">Decline</button></td>
+                <td><button ng-click="vm.RemoveFriendship(request.Username)">Decline</button></td>
             </tr>
         </table>
     </div>

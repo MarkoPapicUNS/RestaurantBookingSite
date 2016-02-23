@@ -1,0 +1,9 @@
+<div ng-controller="GuestsCtrl as vm">
+    <label>Search: <input ng-model="searchText"></label>
+    <table>
+        <tr ng-repeat="guest in vm.guests | filter:searchText">
+            <td><a href="#/guest/{{guest.Username}}">{{guest.DisplayName}}</a></td>
+            <td>{{guest.Picture}}</button></td>
+        </tr>
+    </table>
+</div>

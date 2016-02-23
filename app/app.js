@@ -19,6 +19,10 @@
                 templateUrl: "app/guest/guestView.html",
                 controller: "GuestCtrl"
             }).
+            when("/guests", {
+                templateUrl: "app/guest/allGuestsView.html",
+                controller: "GuestsCtrl"
+            }).
             when("/login", {
                 templateUrl: "app/login/loginView.html",
                 controller: "LoginCtrl"
