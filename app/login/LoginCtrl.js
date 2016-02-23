@@ -15,10 +15,11 @@
 
         vm.login = function (userModel) {
             loginService.login(userModel.name, userModel.password, SuccessCallback, ErrorCallback);
-        }
+        };
 
         function SuccessCallback(response) {
-            redirection.redirect("/home")
+            vm.redirection.redirect("/home");
+            return;
         }
 
         function ErrorCallback(response) {

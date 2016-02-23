@@ -14,12 +14,20 @@
         vm.cookie = cookieService;
         vm.redirection = redirectService;
         vm.guestUsername = $routeParams.guestUsername;
+        vm.requestMessage = "";
 
         vm.DeclineRequest = function(username) {
-            vm.data.restCall.delete("api/friendship/removefriend/" + username, CancelRequestSuccessCallback, CancelRequestErrorCallback);
+            vm.data.restCall.delete("api/friendship/removefriend/" + username, RequestSuccessCallback, RequestErrorCallback);
+            vm.guest.FriendRequests = vm.guest.FriendRequests.filter(function (el) {
+                return el.Username != username;
+            });
         };
-        vm.AcceptRequest = function(username) {
-            console.log(username);
+        vm.AcceptRequest = function(request) {
+            vm.data.restCall.post("api/friendship/acceptfriendrequest", "'" + request.Username + "'", RequestSuccessCallback, RequestErrorCallback);
+            vm.guest.FriendRequests = vm.guest.FriendRequests.filter(function (el) {
+                return el.Username != request.Username;
+            });
+            vm.guest.Friends.push(request);
         };
         /*vm.RatingChange = function(confirmed) {
             console.log(confirmed);
@@ -32,8 +40,10 @@
 
         var accessToken = cookieService.getItem("access_token");
 
-        if (accessToken == "null")
+        if (accessToken == "null") {
             vm.redirection.redirect("/login");
+            return;
+        }
 
         vm.user = cookieService.getItem("user");
 
@@ -51,12 +61,12 @@
             console.log("ERROR:" + response.data)
         }
 
-        function CancelRequestSuccessCallback(response) {
-            console.log(response.data)
+        function RequestSuccessCallback(response) {
+            vm.requestMessage = response.data;
         }
 
-        function CancelRequestErrorCallback(response) {
-            console.log(response.data)
+        function RequestErrorCallback(response) {
+            vm.requestMessage = response.data;
         }
 
         /*function RatingSetup() {
