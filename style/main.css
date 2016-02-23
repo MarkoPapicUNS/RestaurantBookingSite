@@ -18,6 +18,20 @@
     border: pink solid 1px;
 }
 
+.restaurant_info {
+    float: left;
+    border: red solid 1px;
+}
+
+.restaurant_menu {
+
+}
+
+.restaurant_ratings {
+    float: left;
+    border: blue solid 1px;
+}
+
 ul
 {
     padding: 0;

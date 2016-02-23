@@ -9,7 +9,8 @@
         "ngCookies",
         "app.shared",
         "app.login",
-        "app.guest"
+        "app.guest",
+        "app.restaurant"
     ]);
 
     app.config(["$routeProvider",
@@ -21,6 +22,10 @@
             }).
             when("/guests", {
                 templateUrl: "app/guest/allGuestsView.html",
+                controller: "GuestsCtrl"
+            }).
+            when("/restaurant/:restaurantId", {
+                templateUrl: "app/restaurant/restaurantView.html",
                 controller: "GuestsCtrl"
             }).
             when("/login", {

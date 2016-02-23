@@ -13,6 +13,13 @@
         vm.redirection = redirectService;
         vm.loginErrorMessage = "";
 
+        var accessToken = cookieService.getItem("access_token");
+
+        if (accessToken != "null") {
+            vm.redirection.redirect("/home");
+            return;
+        }
+
         vm.login = function (userModel) {
             loginService.login(userModel.name, userModel.password, SuccessCallback, ErrorCallback);
         };

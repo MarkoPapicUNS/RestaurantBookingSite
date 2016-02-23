@@ -30,13 +30,6 @@
     <button ng-show="vm.guest.Relation == 1" ng-click="vm.RemoveFriendship(vm.guest.Username)">Remove Friend</button>
     <button ng-show="vm.guest.Relation == 3" ng-click="vm.RemoveFriendship(vm.guest.Username)">Cancel Request</button>
     <button ng-show="vm.guest.Relation == 2" ng-click="vm.AcceptRequest(vm.guest)">Accept Request</button>
-    <div class="guest_friends" ng-show="vm.guest.Relation == 0 || vm.guest.Relation == 1">
-        <h3>Friends</h3>
-        <ul>
-            <li ng-repeat="friend in vm.guest.Friends"><a href="#/guest/{{friend.Username}}">{{friend.DisplayName}}</a></li>
-        </ul>
-    </div>
-    <hr class="vertical_separator">
     <div class="guest_requests" ng-show="vm.guest.Relation == 0">
         <h4>Pending requests</h4>
         <table>
@@ -51,6 +44,13 @@
         <h4>Sent requests</h4>
         <ul>
             <li ng-repeat="sentRequest in vm.guest.SentFriendRequests"><a href="#/guest/{{sentRequest.Username}}">{{sentRequest.DisplayName}}</a></li>
+        </ul>
+    </div>
+    <hr class="vertical_separator">
+    <div class="guest_friends" ng-show="vm.guest.Relation == 0 || vm.guest.Relation == 1">
+        <h3>Friends</h3>
+        <ul>
+            <li ng-repeat="friend in vm.guest.Friends"><a href="#/guest/{{friend.Username}}">{{friend.DisplayName}}</a></li>
         </ul>
     </div>
     <div class="guest_reservations" ng-show="vm.guest.Relation == 0 || vm.guest.Relation == 1">
@@ -100,7 +100,6 @@
                     <span ng-show="rating.Rating > 2">☆</span>
                     <span ng-show="rating.Rating > 3">☆</span>
                     <span ng-show="rating.Rating > 4">☆</span>
-                    <br>
                     <!--<label>{{rating.Rating}}</label>-->
                     <p>{{rating.Comment}}</p>
                     <!--<p>{{rating.Rated}}</p>-->

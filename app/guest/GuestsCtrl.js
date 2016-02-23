@@ -1,9 +1,6 @@
 /**
  * Created by marko.papic on 2/23/2016.
  */
-/**
- * Created by marko.papic on 2/22/2016.
- */
 (function(){
     "use strict";
 

@@ -1,0 +1,59 @@
+<div ng-controller="RestaurantCtrl as vm">
+    <h2>{{vm.restaurant.Name}}</h2>
+    <div class="restaurant_info"> <!--maybe section or something like that-->
+        <h3>Restaurant info</h3>
+        <table>
+            <tr>
+                <td>Description:</td>
+                <td>{{vm.restaurant.Description}}</td>
+            </tr>
+            <tr>
+                <td>Rating:</td>
+                <td><span ng-show="vm.restaurant.Rating == 0">Not rated</span>
+                    <span ng-show="vm.restaurant.Rating > 0">☆</span>
+                    <span ng-show="vm.restaurant.Rating > 1">☆</span>
+                    <span ng-show="vm.restaurant.Rating > 2">☆</span>
+                    <span ng-show="vm.restaurant.Rating > 3">☆</span>
+                    <span ng-show="vm.restaurant.Rating > 4">☆</span>
+                    <label>{{vm.restaurant.Rating}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Your rating:</td>
+                <td><span ng-show="vm.restaurant.YourRating == 0">Not rated</span>
+                    <span ng-show="vm.restaurant.YourRating > 0">☆</span>
+                    <span ng-show="vm.restaurant.YourRating > 1">☆</span>
+                    <span ng-show="vm.restaurant.YourRating > 2">☆</span>
+                    <span ng-show="vm.restaurant.YourRating > 3">☆</span>
+                    <span ng-show="vm.restaurant.YourRating > 4">☆</span>
+                    <label>{{vm.restaurant.YourRating}}</label>
+                </td>
+        </table>
+    </div>
+    <button ng-show="vm.userRole == 'Guest'">Make reservation</button>
+    <button ng-show="vm.userRole == 'RestaurantManager'">Update menu</button>
+    <button ng-show="vm.userRole == 'RestaurantManager'">Delete restaurant</button>
+    <hr class="vertical_separator">
+    <div class="restaurant_ratings">
+        <h4>Ratings</h4>
+        <ul>
+            <li ng-repeat="rating in vm.restaurant.Ratings">
+
+                <a href="#/guest/{{rating.GuestUsername}}">{{rating.GuestDisplayName}}</a>
+                    <br>
+                    <span ng-show="rating.Grade == 0">Not rated</span>
+                    <span ng-show="rating.Grade > 0">☆</span>
+                    <span ng-show="rating.Grade > 1">☆</span>
+                    <span ng-show="rating.Grade > 2">☆</span>
+                    <span ng-show="rating.Grade > 3">☆</span>
+                    <span ng-show="rating.Grade > 4">☆</span>
+                    <p>{{rating.Comment}}</p>
+
+            </li>
+        </ul>
+    </div>
+    <div class="restaurant_menu">
+        <h4>Menu</h4>
+        <label>Display menu here</label>
+    </div>
+</div>
