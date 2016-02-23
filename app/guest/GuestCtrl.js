@@ -15,6 +15,7 @@
         vm.redirection = redirectService;
         vm.guestUsername = $routeParams.guestUsername;
         vm.requestMessage = "";
+        vm.ratingEditing = "";
 
         vm. AddFriend = function(username) {
             vm.data.restCall.post("api/friendship/sendfriendrequest", "'" + request.Username + "'", RequestSuccessCallback, RequestErrorCallback);
@@ -40,6 +41,30 @@
             vm.data.restCall.post("api/friendship/sendfriendrequest", "'" + username + "'", GenericSuccessCallback, GenericErrorCallback);
             vm.guest.Relation = 3;
         };
+
+        vm.SendRating = function(restaurantId, grade, comment) {
+            var data = {
+                "RestaurantId" : restaurantId,
+                "Rating" : grade,
+                "Comment" : comment
+            }
+            vm.data.restCall.post("api/rating/rate", data, GenericSuccessCallback, GenericErrorCallback);
+            console.log("Rated with rating " + grade + " and comment " + comment);
+            vm.ratingEditing = "";
+            var i;
+            for (i = 0; i < vm.guest.Ratings.length; i++) {
+                if (vm.guest.Ratings[i].RestaurantId == restaurantId) {
+                    vm.guest.Ratings[i].Rating = grade;
+                    vm.guest.Ratings[i].Comment = comment;
+                    vm.guest.Ratings[i].Rated = true;
+                }
+            }
+        };
+
+        vm.OpenRatingForm = function(rating) {
+            console.log(rating);
+            vm.ratingEditing = rating.RestaurantId;
+        }
         /*vm.RatingChange = function(confirmed) {
             console.log(confirmed);
         };

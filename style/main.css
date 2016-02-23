@@ -18,6 +18,16 @@
     border: pink solid 1px;
 }
 
+ul
+{
+    padding: 0;
+    list-style-type: none;
+}
+
+ul li a {
+    text-decoration: none;
+}
+
 /*
 .rating {
     float:left;
