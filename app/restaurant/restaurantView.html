@@ -1,4 +1,10 @@
 <div ng-controller="RestaurantCtrl as vm">
+    <div class="main_bar">
+        <a href="#/home">Home</a>
+        <a href="#/guests">Browse guests</a>
+        <a href="#/restaurants">Browse restaurants</a>
+        <button ng-click="vm.Logout()">Logout</button>
+    </div>
     <h2>{{vm.restaurant.Name}}</h2>
     <div class="restaurant_info"> <!--maybe section or something like that-->
         <h3>Restaurant info</h3>
@@ -30,7 +36,7 @@
                 </td>
         </table>
     </div>
-    <button ng-show="vm.userRole == 'Guest'">Make reservation</button>
+    <a href="#/reservation/{{vm.restaurant.RestaurantId}}" ng-show="vm.userRole == 'Guest'">Make reservation</a>
     <button ng-show="vm.userRole == 'RestaurantManager'">Update menu</button>
     <button ng-show="vm.userRole == 'RestaurantManager'">Delete restaurant</button>
     <hr class="vertical_separator">
@@ -49,6 +55,23 @@
                     <span ng-show="rating.Grade > 4">☆</span>
                     <p>{{rating.Comment}}</p>
 
+            </li>
+        </ul>
+    </div>
+    <div class="restaurant_reservations" ng-show="vm.userRole == 'RestaurantManager'">
+        <h4>Reservations</h4>
+        <ul>
+            <li ng-repeat="reservation in vm.restaurant.Reservations">
+
+                <a href="#/editreservation/{{reservation.GuestUsername}}">{{reservation.GuestDisplayName}}</a>
+                <br>
+                <label>Table: {{reservation.TableNumber}}</label>
+                <br>
+                <label>Time: {{reservation.Time}}</label>
+                <br>
+                <label>Duration: {{reservation.Hours}}h</label>
+                <br>
+                <label>Missed: {{reservation.DidShowUp ? 'No' : 'Yes'}}</label>
             </li>
         </ul>
     </div>

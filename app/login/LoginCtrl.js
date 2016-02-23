@@ -6,14 +6,15 @@
 
     angular
         .module("app.login")
-        .controller("LoginCtrl", ["loginService", "redirectService", LoginCtrl]);
+        .controller("LoginCtrl", ["loginService", "redirectService", "cookieService", LoginCtrl]);
 
-    function LoginCtrl(loginService, redirectService) {
+    function LoginCtrl(loginService, redirectService, cookieService) {
         var vm = this;
         vm.redirection = redirectService;
+        vm.cookie = cookieService;
         vm.loginErrorMessage = "";
 
-        var accessToken = cookieService.getItem("access_token");
+        var accessToken = vm.cookie.getItem("access_token");
 
         if (accessToken != "null") {
             vm.redirection.redirect("/home");

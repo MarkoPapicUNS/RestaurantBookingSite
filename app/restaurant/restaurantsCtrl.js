@@ -1,19 +1,23 @@
 /**
- * Created by marko.papic on 2/23/2016.
+ * Created by tarad on 23/02/2016.
  */
 (function(){
     "use strict";
 
     angular
         .module("app.guest")
-        .controller("GuestsCtrl", ["dataService", "cookieService", "redirectService", "loginService", GuestsCtrl]);
+        .controller("RestaurantsCtrl", ["dataService", "cookieService", "redirectService", "loginService", RestaurantsCtrl]);
 
-    function GuestsCtrl(dataService, cookieService, redirectService, loginService) {
+    function RestaurantsCtrl(dataService, cookieService, redirectService, loginService) {
         var vm = this;
         vm.data = dataService;
         vm.cookie = cookieService;
         vm.redirection = redirectService;
         vm.login = loginService;
+
+        vm.Logout = function() {
+            vm.login.logout();
+        };
 
         var accessToken = cookieService.getItem("access_token");
 
@@ -24,18 +28,18 @@
 
         vm.user = cookieService.getItem("user");
 
-        vm.guests = [];
+        vm.restaurants = [];
 
-        var uri = "api/guest/guests";
+        var uri = "api/restaurant/restaurants";
 
         vm.data.restCall.get(uri, GetGuestsSuccessCallback, GetGuestsErrorCallback);
 
         function GetGuestsSuccessCallback(response) {
-            vm.guests = response.data;
+            vm.restaurants = response.data;
         }
 
         function GetGuestsErrorCallback(response) {
             console.log("ERROR:" + response.data)
         }
-}
+    }
 })()

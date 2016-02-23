@@ -1,3 +1,17 @@
+.main_bar {
+    background-color: aqua;
+    padding: 5px;
+}
+
+.main_bar > * {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.main_bar button {
+    float: right;
+}
+
 .guest_personal_info {
     float: left;
     border: red solid 1px;
@@ -32,13 +46,26 @@
     border: blue solid 1px;
 }
 
+.restaurant_reservations {
+    float: right;
+    border: pink solid 1px;
+}
+
+.reservation_form {
+    border: blue solid 1px;
+}
+
 ul
 {
     padding: 0;
     list-style-type: none;
 }
 
-ul li a {
+a {
+    text-decoration: none;
+}
+
+ul li {
     text-decoration: none;
 }
 

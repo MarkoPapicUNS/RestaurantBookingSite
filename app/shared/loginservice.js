@@ -11,12 +11,14 @@
                 "$http",
                 "appSettings",
                 "cookieService",
+                "redirectService",
                 loginService
             ])
 
-    function loginService($http, appSettings, cookieService) {
+    function loginService($http, appSettings, cookieService, redirectService) {
         var ls = {};
         var cookies = cookieService;
+        var redirection = redirectService;
 
         ls.login = function(username, password, successCB, errorCB) {
             $http({
@@ -47,6 +49,14 @@
             }, function errorCallback(response) {
                 errorCB(response);
             });
+        }
+
+        ls.logout = function() {
+            cookies.putItem("access_token", null);
+            cookies.putItem("refresh_token", null);
+            cookies.putItem("user", null);
+            cookies.putItem("role", null);
+            redirection.redirect("/login");
         }
 
         return ls;

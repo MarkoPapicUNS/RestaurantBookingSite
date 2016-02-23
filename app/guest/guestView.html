@@ -1,4 +1,10 @@
 <div ng-controller="GuestCtrl as vm">
+    <div class="main_bar">
+        <a href="#/home">Home</a>
+        <a href="#/guests">Browse guests</a>
+        <a href="#/restaurants">Browse restaurants</a>
+        <button ng-click="vm.Logout()">Logout</button>
+    </div>
     <label>{{vm.requestMessage}}</label>
     <h2>{{vm.guest.DisplayName}}</h2>
     <div class="guest_personal_info"> <!--maybe section or something like that-->
@@ -65,16 +71,19 @@
                 <td>{{reservation.TableNumber}}</td>
             </tr>
             <tr>
-                <td>Active:</td>
-                <td>{{reservation.DidShowUp}}</td>
+                <td>Missed:</td>
+                <td>{{reservation.DidShowUp ? 'No' : 'Yes'}}</td>
             </tr>
             <tr>
                 <td>Time:</td>
                 <td>{{reservation.Time}}</td>
             </tr>
             <tr>
-                <td>Hours:</td>
-                <td>{{reservation.Hours}}</td>
+                <td>Duration:</td>
+                <td>{{reservation.Hours}}h</td>
+            </tr>
+            <tr>
+                <td><a href="#/inviteFriend/{{reservation.ReservationId}}">Invite friend</a></td>
             </tr>
         </table>
     </div>

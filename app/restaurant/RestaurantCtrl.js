@@ -6,14 +6,19 @@
 
     angular
         .module("app.restaurant")
-        .controller("RestaurantCtrl", ["$routeParams", "dataService", "cookieService", "redirectService", RestaurantCtrl]);
+        .controller("RestaurantCtrl", ["$routeParams", "dataService", "cookieService", "redirectService", "loginService", RestaurantCtrl]);
 
-    function RestaurantCtrl($routeParams, dataService, cookieService, redirectService) {
+    function RestaurantCtrl($routeParams, dataService, cookieService, redirectService, loginService) {
         var vm = this;
         vm.data = dataService;
         vm.cookie = cookieService;
         vm.redirection = redirectService;
+        vm.login = loginService;
         vm.restaurantId = $routeParams.restaurantId;
+
+        vm.Logout = function() {
+            vm.login.logout();
+        };
 
         var accessToken = cookieService.getItem("access_token");
 
@@ -26,11 +31,6 @@
         vm.userRole = cookieService.getItem("role");
         if (vm.userRole == null)
             redirection.redirect("/home");
-
-        vm.restaurant = {
-            "Name" : "Hi",
-            "Nick" : "There"
-        };
 
         var uri = "api/restaurant/restaurant/" + vm.restaurantId;
 

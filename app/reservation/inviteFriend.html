@@ -1,15 +1,17 @@
-<div ng-controller="GuestsCtrl as vm">
+<div ng-controller="InviteCtrl as vm">
     <div class="main_bar">
         <a href="#/home">Home</a>
         <a href="#/guests">Browse guests</a>
         <a href="#/restaurants">Browse restaurants</a>
         <button ng-click="vm.Logout()">Logout</button>
     </div>
+    <h2>Invite friend</h2>
     <label>Search: <input ng-model="searchText"></label>
     <table>
-        <tr ng-repeat="guest in vm.guests | filter:searchText">
-            <td><a href="#/guest/{{guest.Username}}">{{guest.DisplayName}}</a></td>
+        <tr ng-repeat="friend in vm.friends | filter:searchText">
+            <td><label ng-click="vm.FriendSelected(friend)">{{friend.DisplayName}}</label></td>
             <td>{{guest.Picture}}</button></td>
         </tr>
     </table>
+    <label>{{vm.ErrorMessage}}</label>
 </div>

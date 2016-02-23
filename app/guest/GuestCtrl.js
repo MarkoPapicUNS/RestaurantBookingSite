@@ -6,20 +6,22 @@
 
     angular
         .module("app.guest")
-        .controller("GuestCtrl", ["$routeParams", "dataService", "cookieService", "redirectService", GuestCtrl]);
+        .controller("GuestCtrl", ["$routeParams", "dataService", "cookieService", "redirectService", "loginService", GuestCtrl]);
 
-    function GuestCtrl($routeParams, dataService, cookieService, redirectService) {
+    function GuestCtrl($routeParams, dataService, cookieService, redirectService, loginService) {
         var vm = this;
         vm.data = dataService;
         vm.cookie = cookieService;
         vm.redirection = redirectService;
+        vm.login = loginService;
         vm.guestUsername = $routeParams.guestUsername;
         vm.requestMessage = "";
         vm.ratingEditing = "";
 
         vm. AddFriend = function(username) {
             vm.data.restCall.post("api/friendship/sendfriendrequest", "'" + request.Username + "'", RequestSuccessCallback, RequestErrorCallback);
-            vm.guest.Relation = 3;
+            if (username == vm.user)
+                vm.guest.Relation = 3;
         };
 
         vm.RemoveFriendship = function(username) {
@@ -29,17 +31,25 @@
                     return el.Username != username;
                 });
             }
-            vm.guest.Relation = 4;
+            if (username == vm.user)
+                vm.guest.Relation = 4;
         };
 
         vm.AcceptRequest = function(request) {
             vm.data.restCall.post("api/friendship/acceptfriendrequest", "'" + request.Username + "'", GenericSuccessCallback, GenericErrorCallback);
-            vm.guest.Relation = 1;
+            if (vm.guest.FriendRequests != null) {
+                vm.guest.FriendRequests = vm.guest.FriendRequests.filter(function (el) {
+                    return el.Username != request.username;
+                });
+            }
+            if (request.Username == vm.user)
+                vm.guest.Relation = 1;
         };
 
         vm.SendRequest = function(username) {
             vm.data.restCall.post("api/friendship/sendfriendrequest", "'" + username + "'", GenericSuccessCallback, GenericErrorCallback);
-            vm.guest.Relation = 3;
+            if (username == vm.user)
+                vm.guest.Relation = 3;
         };
 
         vm.SendRating = function(restaurantId, grade, comment) {
@@ -64,7 +74,12 @@
         vm.OpenRatingForm = function(rating) {
             console.log(rating);
             vm.ratingEditing = rating.RestaurantId;
-        }
+        };
+
+        vm.Logout = function() {
+            vm.login.logout();
+        };
+
         /*vm.RatingChange = function(confirmed) {
             console.log(confirmed);
         };
@@ -75,9 +90,15 @@
         RatingSetup();*/
 
         var accessToken = cookieService.getItem("access_token");
+        var role = cookieService.getItem("role");
 
         if (accessToken == "null") {
             vm.redirection.redirect("/login");
+            return;
+        }
+
+        if (role != "Guest") {
+            vm.redirection.redirect("/home");
             return;
         }
 
