@@ -18,11 +18,11 @@
         vm.requestMessage = "";
         vm.ratingEditing = "";
 
-        vm. AddFriend = function(username) {
+        /*vm. AddFriend = function(username) {
             vm.data.restCall.post("api/friendship/sendfriendrequest", "'" + request.Username + "'", RequestSuccessCallback, RequestErrorCallback);
-            if (username == vm.user)
+            if (username == vm.guestUsername)
                 vm.guest.Relation = 3;
-        };
+        };*/
 
         vm.RemoveFriendship = function(username) {
             vm.data.restCall.delete("api/friendship/removefriend/" + username, GenericSuccessCallback,GenericErrorCallback);
@@ -31,7 +31,7 @@
                     return el.Username != username;
                 });
             }
-            if (username == vm.user)
+            if (username == vm.guestUsername)
                 vm.guest.Relation = 4;
         };
 
@@ -39,16 +39,16 @@
             vm.data.restCall.post("api/friendship/acceptfriendrequest", "'" + request.Username + "'", GenericSuccessCallback, GenericErrorCallback);
             if (vm.guest.FriendRequests != null) {
                 vm.guest.FriendRequests = vm.guest.FriendRequests.filter(function (el) {
-                    return el.Username != request.username;
+                    return el.Username != request.Username;
                 });
             }
-            if (request.Username == vm.user)
+            if (request.Username == vm.guestUsername)
                 vm.guest.Relation = 1;
         };
 
         vm.SendRequest = function(username) {
             vm.data.restCall.post("api/friendship/sendfriendrequest", "'" + username + "'", GenericSuccessCallback, GenericErrorCallback);
-            if (username == vm.user)
+            if (username == vm.guestUsername)
                 vm.guest.Relation = 3;
         };
 

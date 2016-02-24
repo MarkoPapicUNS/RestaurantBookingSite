@@ -13,5 +13,5 @@
         <label>Number of seats: {{reservation.table.NumberOfSeats}}</label><br>
         <button ng-click="vm.MakeReservation(reservation.table.Number, reservation.time, reservation.hours)">Make reservation</button>
     </div>
-    <label>{{vm.ErrorMessage}}</label>
+    <label class="error_message">{{vm.ErrorMessage}}</label>
 </div>

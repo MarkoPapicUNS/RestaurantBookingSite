@@ -1,6 +1,27 @@
+body {
+    background-color: #ffffe6;
+}
+
+.main {
+    width: 70%;
+    min-height: 900px;
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+    /*color: #808080;*/
+    background-color: #85adad;
+    /*font-size: 20px;
+    font-weight: bold;*/
+}
+
+h1 {
+    color: #ffffe6;
+}
+
 .main_bar {
-    background-color: aqua;
+    background-color: #ffffe6;
     padding: 5px;
+    border-radius: 5px;
 }
 
 .main_bar > * {
@@ -12,9 +33,23 @@
     float: right;
 }
 
+.success_message {
+    font-weight: bold;
+    color: lightseagreen;
+}
+
+.error_message {
+    font-weight: bold;
+    color: red;
+}
+
 .guest_personal_info {
     float: left;
-    border: red solid 1px;
+    background-color: white;
+    color: #4a4a4a;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 4px;
 }
 
 .guest_friends {
@@ -24,12 +59,18 @@
 
 .guest_requests {
     float: right;
-    border: green solid 1px;
+    background-color: #dbdbdb;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 10px;
 }
 
 .guest_sent_requests {
     float: right;
-    border: pink solid 1px;
+    background-color: #dbdbdb;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 10px;
 }
 
 .restaurant_info {
