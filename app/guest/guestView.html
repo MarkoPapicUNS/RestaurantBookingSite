@@ -52,7 +52,7 @@
             <li ng-repeat="sentRequest in vm.guest.SentFriendRequests"><a href="#/guest/{{sentRequest.Username}}">{{sentRequest.DisplayName}}</a></li>
         </ul>
     </div>
-    <hr class="vertical_separator">
+    <hr class="separator">
     <div class="guest_friends" ng-show="vm.guest.Relation == 0 || vm.guest.Relation == 1">
         <h3>Friends</h3>
         <ul>
@@ -86,6 +86,16 @@
                 <td><a href="#/inviteFriend/{{reservation.ReservationId}}">Invite friend</a></td>
             </tr>
         </table>
+        <br class="separator">
+    </div>
+    <div class="guest_visits" ng-show="vm.guest.Relation == 0 || vm.guest.Relation == 1">
+        <h4>Visits</h4>
+        <ul ng-repeat="visit in vm.guest.Visits">
+            <li>
+                <span>{{visit.RestaurantName}}</span>
+                <span>{{visit.Time}}</span>
+            </li>
+        </ul>
     </div>
     <div class="guest_ratings" ng-show="vm.guest.Relation == 0 || vm.guest.Relation == 1">
         <h4>Ratings</h4>
@@ -137,14 +147,6 @@
             </li>
         </ul>
     </div>
-    <div ng-show="vm.guest.Relation == 0 || vm.guest.Relation == 1">
-        <h4>Visits</h4>
-        <ul ng-repeat="visit in vm.guest.Visits">
-            <li>
-                <span>{{visit.RestaurantName}}</span>
-                <span>{{visit.Time}}</span>
-            </li>
-        </ul>
-    </div>
+    <br class="separator">
 </div>
 </div>

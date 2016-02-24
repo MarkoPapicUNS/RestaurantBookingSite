@@ -45,8 +45,8 @@ h1 {
 
 .guest_personal_info {
     float: left;
-    background-color: white;
-    color: #4a4a4a;
+    background-color: #ffffe6;
+    color: #797977;
     padding: 5px;
     margin: 5px;
     border-radius: 4px;
@@ -54,12 +54,20 @@ h1 {
 
 .guest_friends {
     float: right;
-    border: blue solid 1px;
+    width: 28%;
+    height: 700px;
+    border-radius: 4px;
+    border: solid #dbdbdb 3px;
+    background-color: white;
 }
 
 .guest_requests {
     float: right;
+    height: 250px;
+    width: 220px;
+    overflow-y: auto;
     background-color: #dbdbdb;
+    border-radius: 4px;
     padding-left: 5px;
     padding-right: 5px;
     margin: 10px;
@@ -67,10 +75,41 @@ h1 {
 
 .guest_sent_requests {
     float: right;
+    height: 250px;
+    width: 200px;
+    overflow-y: auto;
     background-color: #dbdbdb;
+    border-radius: 4px;
     padding-left: 5px;
     padding-right: 5px;
     margin: 10px;
+}
+
+.guest_reservations {
+    width: 65%;
+    height: 430px;
+    overflow-y: auto;
+    border-radius: 4px;
+    background-color: #ffffe6;
+    color: #797977;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.guest_reservations table {
+    float: left;
+    background-color: #C5E0E5;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.guest_ratings {
+
+}
+
+.guest_visits {
+    float: left;
 }
 
 .restaurant_info {
@@ -143,6 +182,6 @@ ul li {
     color:#FFF;
 }*/
 
-.vertical_separator {
+.separator {
     clear: both;
 }
