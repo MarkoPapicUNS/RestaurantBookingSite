@@ -6,6 +6,12 @@
         <button ng-click="vm.Logout()">Logout</button>
     </div>
     <h2>Invite friend</h2>
+    <label>{{vm.ErrorMessage}}</label>
+    <label>{{vm.SuccessMessage}}</label>
+    <br>
+    <label>Selected friend: </label><label>{{vm.selectedFriend.DisplayName}}</label>
+    <button ng-click="vm.InviteFriend()">Invite</button>
+    <br>
     <label>Search: <input ng-model="searchText"></label>
     <table>
         <tr ng-repeat="friend in vm.friends | filter:searchText">

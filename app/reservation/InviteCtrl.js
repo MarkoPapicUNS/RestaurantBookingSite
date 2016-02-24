@@ -19,24 +19,24 @@
 
         vm.friends = [];
         vm.ErrorMessage = "";
+        vm.ErrorMessage = "";
 
-        vm.IviteFriend = function(guestUsername) {
-            if(guestUsername == null) {
+        vm.InviteFriend = function() {
+            if(vm.selectedFriend == null) {
                 vm.ErrorMessage = "Please select guest.";
                 return;
             }
             var data = {
-                "RestaurantId" : reservationId,
-                "InvitedGuestUsername" : guestUsername,
-                "Time" : time,
-                "Hours" : hours
+                "ReservationId" : vm.reservationId,
+                "InvitedGuestUsername" : vm.selectedFriend.Username
             };
-            vm.data.restCall.post("api/reservation/makereservation", data, MakeReservationSuccessCallback, MakeReservationErrorCallback);
-        }
+            vm.data.restCall.post("api/reservation/invitefriend", data, InviteSuccessCallback, InviteErrorCallback);
+        };
 
         vm.FriendSelected = function(friend) {
             vm.selectedFriend = friend;
-        }
+            console.log(friend);
+        };
 
         vm.Logout = function() {
             vm.login.logout();
@@ -66,11 +66,20 @@
         }
 
         function InviteSuccessCallback(response) {
-            vm.ErrorMessage = response.data.Message;
+            if (response.data.Message == null)
+                vm.SuccessMessage = response.data;
+            else
+                vm.SuccessMessage = response.data.Message;
+            vm.friends = vm.friends.filter(function (el) {
+                return el.Username != vm.selectedFriend.Username;
+            });
         }
 
-        function MakeReservationErrorCallback(response) {
-            vm.ErrorMessage = response.data.Message;
+        function InviteErrorCallback(response) {
+            if (response.data.Message == null)
+                vm.ErrorMessage = response.data;
+            else
+                vm.ErrorMessage = response.data.Message;
         }
     }
 })()
