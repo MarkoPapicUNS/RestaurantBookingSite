@@ -37,9 +37,9 @@
         </table>
     </div>
     <a href="#/reservation/{{vm.restaurant.RestaurantId}}" ng-show="vm.userRole == 'Guest'">Make reservation</a>
-    <button ng-show="vm.userRole == 'RestaurantManager'">Update menu</button>
-    <button ng-show="vm.userRole == 'RestaurantManager'">Delete restaurant</button>
-    <hr class="vertical_separator">
+    <button class="header_button" ng-show="vm.userRole == 'RestaurantManager'">Update menu</button>
+    <button class="header_button" ng-show="vm.userRole == 'RestaurantManager'">Delete restaurant</button>
+    <hr class="separator">
     <div class="restaurant_ratings">
         <h4>Ratings</h4>
         <ul>

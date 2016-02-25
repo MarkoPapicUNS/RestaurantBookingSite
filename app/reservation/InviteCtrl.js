@@ -19,7 +19,7 @@
 
         vm.friends = [];
         vm.ErrorMessage = "";
-        vm.ErrorMessage = "";
+        vm.SuccessMessage = "";
 
         vm.InviteFriend = function() {
             if(vm.selectedFriend == null) {

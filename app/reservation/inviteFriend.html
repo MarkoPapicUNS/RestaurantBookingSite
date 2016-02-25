@@ -9,15 +9,16 @@
     <label class="error_message">{{vm.ErrorMessage}}</label>
     <label class="success_message">{{vm.SuccessMessage}}</label>
     <br>
-    <label>Selected friend: </label><label>{{vm.selectedFriend.DisplayName}}</label>
+    <div class="invite_friend">
+    <label><b>Selected friend: </b></label><label>{{vm.selectedFriend.DisplayName}}</label>
     <button ng-click="vm.InviteFriend()">Invite</button>
     <br>
-    <label>Search: <input ng-model="searchText"></label>
+    <label><b>Search: </b><input ng-model="searchText"></label>
     <table>
         <tr ng-repeat="friend in vm.friends | filter:searchText">
-            <td><label ng-click="vm.FriendSelected(friend)">{{friend.DisplayName}}</label></td>
+            <td><label class="friend_for_invite" ng-click="vm.FriendSelected(friend)">{{friend.DisplayName}}</label></td>
             <td>{{guest.Picture}}</button></td>
         </tr>
     </table>
-    <label>{{vm.ErrorMessage}}</label>
+    </div>
 </div>

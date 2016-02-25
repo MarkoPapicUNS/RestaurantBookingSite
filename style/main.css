@@ -19,9 +19,15 @@ h1 {
 }
 
 .main_bar {
+    height: 30px;
     background-color: #ffffe6;
     padding: 5px;
     border-radius: 5px;
+}
+
+.main_bar a {
+    color: #797977;
+    font-weight: bold;
 }
 
 .main_bar > * {
@@ -31,6 +37,12 @@ h1 {
 
 .main_bar button {
     float: right;
+    border-radius: 3px;
+    background-color: #dbdbdb;
+    border: solid #ffffe6 3px;
+    padding: 5px;
+    color: #85adad;
+    font-weight: bold;
 }
 
 .success_message {
@@ -41,6 +53,52 @@ h1 {
 .error_message {
     font-weight: bold;
     color: red;
+}
+
+.header_button {
+    margin: 5px;
+    border-radius: 3px;
+    background-color: #dbdbdb;
+    border: solid #ffffe6 3px;
+    padding: 5px;
+    color: #85adad;
+    font-weight: bold;
+}
+
+
+.searchable_list {
+    width: 50%;
+    background-color: #ffffe6;
+    color: #797977;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.searchable_list input {
+    border-radius: 4px;
+    border: solid #85adad 3px;
+    margin-bottom: 15px;
+}
+
+.searchable_list table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.searchable_list a {
+    font-weight: bold;
+}
+
+.searchable_list a:visited {
+    color: #797977;
+}
+
+.searchable_list a:hover {
+    color: #85adad;
 }
 
 .guest_personal_info {
@@ -56,9 +114,25 @@ h1 {
     float: right;
     width: 28%;
     height: 700px;
+    overflow-y: auto;
     border-radius: 4px;
-    border: solid #dbdbdb 3px;
+    padding-left: 10px;
+    border: solid #dbdbdb 5px;
     background-color: white;
+}
+
+.guest_friends ul {
+    text-align: center;
+    color: #85adad;
+    font-weight: bold;
+}
+
+.guest_friends ul a:visited {
+    color: #85adad;
+}
+
+.guest_friends ul a:hover {
+    color: #dbdbdb;
 }
 
 .guest_requests {
@@ -105,25 +179,82 @@ h1 {
 }
 
 .guest_ratings {
+    float: left;
+    width: 250px;
+    background-color: #dbdbdb;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 4px;
+}
 
+.guest_ratings ul {
+    border-radius: 4px;
+    background-color: #ffffe6;
+    color: #797977;
+    margin: 8px;
+    padding: 5px;
 }
 
 .guest_visits {
     float: left;
+    width: 250px;
+    background-color: #dbdbdb;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.guest_visits ul {
+    border-radius: 4px;
+    background-color: #ffffe6;
+    color: #797977;
+    margin: 8px;
+    padding: 5px;
 }
 
 .restaurant_info {
     float: left;
-    border: red solid 1px;
+    background-color: #ffffe6;
+    color: #797977;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 4px;
 }
 
 .restaurant_menu {
+    width: 60%;
+    height: 700px;
+    overflow-y: auto;
+    border-radius: 4px;
+    padding-left: 10px;
+    border: solid #dbdbdb 5px;
+    background-color: white;
+}
 
+.restaurant_menu ul {
+    text-align: center;
+    color: #85adad;
+    font-weight: bold;
 }
 
 .restaurant_ratings {
     float: left;
-    border: blue solid 1px;
+    width: 25%;
+    height: 430px;
+    overflow-y: auto;
+    border-radius: 4px;
+    background-color: #ffffe6;
+    color: #797977;
+    margin-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.restaurant_ratings ul {
+    background-color: #C5E0E5;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 4px;
 }
 
 .restaurant_reservations {
@@ -132,7 +263,42 @@ h1 {
 }
 
 .reservation_form {
-    border: blue solid 1px;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #ffffe6;
+    color: #797977;
+    border-radius: 4px;
+}
+
+.reservation_form * {
+    margin-bottom: 5px;
+}
+
+.invite_friend {
+    color: #ffffe6;
+}
+
+.invite_friend * {
+    margin-bottom: 8px;
+}
+
+.invite_friend table {
+    background: white;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.friend_for_invite {
+    color: #797977;
+    font-weight: bold;
+}
+
+.friend_for_invite:hover {
+    color: #ffffe6;
+    font-weight: bold;
 }
 
 ul

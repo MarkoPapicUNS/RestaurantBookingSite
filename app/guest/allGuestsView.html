@@ -5,11 +5,13 @@
         <a href="#/restaurants">Browse restaurants</a>
         <button ng-click="vm.Logout()">Logout</button>
     </div>
-    <label>Search: <input ng-model="searchText"></label>
-    <table>
-        <tr ng-repeat="guest in vm.guests | filter:searchText">
-            <td><a href="#/guest/{{guest.Username}}">{{guest.DisplayName}}</a></td>
-            <td>{{guest.Picture}}</button></td>
-        </tr>
-    </table>
+    <div class="searchable_list">
+    <label><b>Search: </b><input ng-model="searchText"></label>
+        <table>
+            <tr ng-repeat="guest in vm.guests | filter:searchText">
+                <td><a href="#/guest/{{guest.Username}}">{{guest.DisplayName}}</a></td>
+                <td>{{guest.Picture}}</button></td>
+            </tr>
+        </table>
+    </div>
 </div>

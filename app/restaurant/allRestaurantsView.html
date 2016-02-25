@@ -5,33 +5,35 @@
         <a href="#/restaurants">Browse restaurants</a>
         <button ng-click="vm.Logout()">Logout</button>
     </div>
-    <label>Search: <input ng-model="searchText"></label>
-    <table>
-        <tr ng-repeat="restaurant in vm.restaurants | filter:searchText">
-            <td>Name:</td>
-            <td><a href="#/restaurant/{{restaurant.RestaurantId}}">{{restaurant.Name}}</a></td>
-            <td>Description:</td>
-            <td>{{restaurant.Description}}</td>
-            <td>Rating:</td>
-            <td>
-                <span ng-show="restaurant.Rating == 0">Not rated</span>
-                <span ng-show="restaurant.Rating > 0">☆</span>
-                <span ng-show="restaurant.Rating > 1">☆</span>
-                <span ng-show="restaurant.Rating > 2">☆</span>
-                <span ng-show="restaurant.Rating > 3">☆</span>
-                <span ng-show="restaurant.Rating > 4">☆</span>
-                <label>{{restaurant.Rating}}</label>
-            </td>
-            <td>Your Rating:</td>
-            <td>
-                <span ng-show="restaurant.YourRating == 0">Not rated</span>
-                <span ng-show="restaurant.YourRating > 0">☆</span>
-                <span ng-show="restaurant.YourRating > 1">☆</span>
-                <span ng-show="restaurant.YourRating > 2">☆</span>
-                <span ng-show="restaurant.YourRating > 3">☆</span>
-                <span ng-show="restaurant.YourRating > 4">☆</span>
-                <label>{{restaurant.YourRating}}</label>
-            </td>
-        </tr>
-    </table>
+    <div class="searchable_list">
+        <label>Search: <input ng-model="searchText"></label>
+        <table>
+            <tr ng-repeat="restaurant in vm.restaurants | filter:searchText">
+                <td>Name:</td>
+                <td><a href="#/restaurant/{{restaurant.RestaurantId}}">{{restaurant.Name}}</a></td>
+                <td>Description:</td>
+                <td>{{restaurant.Description}}</td>
+                <td>Rating:</td>
+                <td>
+                    <span ng-show="restaurant.Rating == 0">Not rated</span>
+                    <span ng-show="restaurant.Rating > 0">☆</span>
+                    <span ng-show="restaurant.Rating > 1">☆</span>
+                    <span ng-show="restaurant.Rating > 2">☆</span>
+                    <span ng-show="restaurant.Rating > 3">☆</span>
+                    <span ng-show="restaurant.Rating > 4">☆</span>
+                    <label>{{restaurant.Rating}}</label>
+                </td>
+                <td>Your Rating:</td>
+                <td>
+                    <span ng-show="restaurant.YourRating == 0">Not rated</span>
+                    <span ng-show="restaurant.YourRating > 0">☆</span>
+                    <span ng-show="restaurant.YourRating > 1">☆</span>
+                    <span ng-show="restaurant.YourRating > 2">☆</span>
+                    <span ng-show="restaurant.YourRating > 3">☆</span>
+                    <span ng-show="restaurant.YourRating > 4">☆</span>
+                    <label>{{restaurant.YourRating}}</label>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>

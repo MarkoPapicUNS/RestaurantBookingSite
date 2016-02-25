@@ -15,7 +15,8 @@
         vm.redirection = redirectService;
         vm.login = loginService;
         vm.guestUsername = $routeParams.guestUsername;
-        vm.requestMessage = "";
+        vm.successMessage = "";
+        vm.errorMessage = "";
         vm.ratingEditing = "";
 
         /*vm. AddFriend = function(username) {
@@ -71,6 +72,10 @@
             }
         };
 
+        vm.CancelRating = function() {
+            vm.ratingEditing = "";
+        };
+
         vm.OpenRatingForm = function(rating) {
             console.log(rating);
             vm.ratingEditing = rating.RestaurantId;
@@ -120,11 +125,11 @@
 
         function GenericSuccessCallback(response) {
 
-            vm.requestMessage = response.data.Message == null ? response.data : response.data.Message;
+            vm.successMessage = response.data.Message == null ? response.data : response.data.Message;
         }
 
         function GenericErrorCallback(response) {
-            vm.requestMessage = response.data.Message == null ? response.data : response.data.Message;
+            vm.errorMessage = response.data.Message == null ? response.data : response.data.Message;
         }
 
         /*function RatingSetup() {
