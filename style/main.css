@@ -319,6 +319,50 @@ h1 {
     font-weight: bold;
 }
 
+.manager_personal_info {
+    float: left;
+    background-color: #ffffe6;
+    color: #797977;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 4px;
+}
+
+.manager_restaurant_info {
+    float: right;
+    background-color: #dbdbdb;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.manager_menu {
+    float: left;
+    background-color: #dbdbdb;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.manager_reservations {
+    float: right;
+    width: 50%;
+    height: 430px;
+    overflow-y: auto;
+    border-radius: 4px;
+    background-color: #ffffe6;
+    color: #797977;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.manager_reservations table {
+    float: left;
+    background-color: #C5E0E5;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 4px;
+}
+
 ul
 {
     padding: 0;

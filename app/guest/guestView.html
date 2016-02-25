@@ -85,7 +85,7 @@
                 <td>Duration:</td>
                 <td>{{reservation.Hours}}h</td>
             </tr>
-            <tr>
+            <tr ng-show="vm.guest.Relation == 0">
                 <td><a href="#/inviteFriend/{{reservation.ReservationId}}">Invite friend</a></td>
             </tr>
         </table>

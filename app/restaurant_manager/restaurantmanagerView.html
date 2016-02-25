@@ -1,0 +1,113 @@
+<div ng-controller="RestaurantManagerCtrl as vm">
+    <div class="main_bar">
+        <a href="#/home">Home</a>
+        <button ng-click="vm.Logout()">Logout</button>
+    </div>
+    <h2>{{vm.RestaurantManager.Username}}</h2>
+    <div class="manager_personal_info">
+        <h3>Personal info</h3>
+        <table>
+            <tr>
+                <td>First name:</td>
+                <td>{{vm.RestaurantManager.FirstName}}</td>
+            </tr>
+            <tr>
+                <td>Last name:</td>
+                <td>{{vm.RestaurantManager.LastName}}</td>
+            </tr>
+            <tr>
+                <td>Street:</td>
+                <td>{{vm.RestaurantManager.Address.Street}} {{vm.Restaurant.Address.Number}}</td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td>{{vm.RestaurantManager.Address.City}} {{vm.Restaurant.Address.Zip}}</td>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td>{{vm.RestaurantManager.Gender}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="manager_restaurant_info">
+        <h3>Restaurant info</h3>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>{{vm.Restaurant.Name}}</td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td>{{vm.Restaurant.Description}}</td>
+            </tr>
+            <tr>
+                <td>Rating:</td>
+                <td><span ng-show="vm.Restaurant.Rating == 0">Not rated</span>
+                    <span ng-show="vm.Restaurant.Rating > 0">☆</span>
+                    <span ng-show="vm.Restaurant.Rating > 1">☆</span>
+                    <span ng-show="vm.Restaurant.Rating > 2">☆</span>
+                    <span ng-show="vm.Restaurant.Rating > 3">☆</span>
+                    <span ng-show="vm.Restaurant.Rating > 4">☆</span>
+                    <label>{{vm.Restaurant.Rating}}</label>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <hr class="separator">
+    <div class="manager_menu">
+        <h4>Menu</h4>
+        <label class="error_message">{{vm.loginErrorMessage}}</label>
+        <table>
+            <tr ng-repeat="menuItem in vm.Restaurant.Menu">
+                <td><b>{{menuItem.Name}}</b></td>
+                <td>{{menuItem.Description}}</td>
+                <td>{{menuItem.Price}} din</td>
+                <td><img src="../../assets/images/minus.png" ng-click="vm.RemoveMeal(menuItem)" /></td>
+            </tr>
+            <tr>
+                <td><input id="mealName" type="text"  ng-model="meal.Name" ></td>
+                <td><input id="mealDesc" type="text"  ng-model="meal.Description" ></td>
+                <td><input id="mealPrice" type="number"  ng-model="meal.Price" ></td>
+                <td><img src="../../assets/images/plus.png" ng-click="vm.AddMeal(meal)" /></td>
+            </tr>
+        </table>
+    </div>
+    <div class="manager_reservations">
+        <h4>Reservations</h4>
+        <!--<ul>
+            <li ng-repeat="reservation in vm.Restaurant.Reservations">
+
+                <br>
+                <label>Table: {{reservation.TableNumber}}</label>
+                <br>
+                <label>Time: {{reservation.Time}}</label>
+                <br>
+                <label>Duration: {{reservation.Hours}}h</label>
+                <br>
+                <label>Missed: {{reservation.DidShowUp ? 'No' : 'Yes'}}</label>
+            </li>
+        </ul>-->
+        <table ng-repeat="reservation in vm.Restaurant.Reservations">
+            <tr>
+                <td>Guest:</td>
+                <td>{{reservation.GuestDisplayName}}</td>
+            </tr>
+            <tr>
+                <td>Table number:</td>
+                <td>{{reservation.TableNumber}}</td>
+            </tr>
+            <tr>
+                <td>Missed:</td>
+                <td>{{reservation.DidShowUp ? 'No' : 'Yes'}}</td>
+            </tr>
+            <tr>
+                <td>Time:</td>
+                <td>{{reservation.Time}}</td>
+            </tr>
+            <tr>
+                <td>Duration:</td>
+                <td>{{reservation.Hours}}h</td>
+            </tr>
+        </table>
+    </div>
+</div>

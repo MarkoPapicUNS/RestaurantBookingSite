@@ -11,7 +11,8 @@
         "app.login",
         "app.guest",
         "app.restaurant",
-        "app.reservation"
+        "app.reservation",
+        "app.restaurantmanager"
     ]);
 
     app.config(["$routeProvider",
@@ -44,6 +45,10 @@
             when("/inviteFriend/:reservationId", {
                 templateUrl: "app/reservation/inviteFriend.html",
                 controller: "InviteCtrl"
+            }).
+            when("/restaurantmanager", {
+                templateUrl: "app/restaurant_manager/restaurantmanagerView.html",
+                controller: "RestaurantManagerCtrl"
             }).
             when("/login", {
                 templateUrl: "app/login/loginView.html",

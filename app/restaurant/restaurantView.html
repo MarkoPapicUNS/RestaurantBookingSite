@@ -37,8 +37,6 @@
         </table>
     </div>
     <a href="#/reservation/{{vm.restaurant.RestaurantId}}" ng-show="vm.userRole == 'Guest'">Make reservation</a>
-    <button class="header_button" ng-show="vm.userRole == 'RestaurantManager'">Update menu</button>
-    <button class="header_button" ng-show="vm.userRole == 'RestaurantManager'">Delete restaurant</button>
     <hr class="separator">
     <div class="restaurant_ratings">
         <h4>Ratings</h4>
@@ -55,23 +53,6 @@
                     <span ng-show="rating.Grade > 4">☆</span>
                     <p>{{rating.Comment}}</p>
 
-            </li>
-        </ul>
-    </div>
-    <div class="restaurant_reservations" ng-show="vm.userRole == 'RestaurantManager'">
-        <h4>Reservations</h4>
-        <ul>
-            <li ng-repeat="reservation in vm.restaurant.Reservations">
-
-                <a href="#/editreservation/{{reservation.GuestUsername}}">{{reservation.GuestDisplayName}}</a>
-                <br>
-                <label>Table: {{reservation.TableNumber}}</label>
-                <br>
-                <label>Time: {{reservation.Time}}</label>
-                <br>
-                <label>Duration: {{reservation.Hours}}h</label>
-                <br>
-                <label>Missed: {{reservation.DidShowUp ? 'No' : 'Yes'}}</label>
             </li>
         </ul>
     </div>

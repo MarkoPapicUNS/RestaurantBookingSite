@@ -27,7 +27,7 @@
                 return;
                 break;
             case 'RestaurantManager':
-                vm.redirection.redirect("/restaurantManager");
+                vm.redirection.redirect("/restaurantmanager");
                 return;
                 break;
             case 'SystemManager':
