@@ -91,6 +91,7 @@ h1 {
 
 .searchable_list a {
     font-weight: bold;
+    color: #797977;
 }
 
 .searchable_list a:visited {
@@ -205,6 +206,23 @@ h1 {
 }
 
 .guest_visits ul {
+    border-radius: 4px;
+    background-color: #ffffe6;
+    color: #797977;
+    margin: 8px;
+    padding: 5px;
+}
+
+.guest_invitations {
+    float: left;
+    width: 250px;
+    background-color: #dbdbdb;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.guest_invitations ul {
     border-radius: 4px;
     background-color: #ffffe6;
     color: #797977;

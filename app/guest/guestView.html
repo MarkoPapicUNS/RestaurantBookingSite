@@ -151,6 +151,20 @@
             </li>
         </ul>
     </div>
+    <div class="guest_invitations" ng-show="vm.guest.Relation == 0">
+        <h4>Reservation invitations</h4>
+        <ul ng-repeat="invitation in vm.guest.ReservationInvitations">
+            <li>
+                <a href="#/restaurant/{{invitation.RestaurantId}}">{{invitation.RestaurantName}} </a>
+                <span>{{visit.Time}}</span>
+                <br>
+                <span>Invited by {{invitation.InvitorDisplayName}}</span>
+                <br>
+                <button ng-show="invitation.Status == 0" ng-click="vm.AcceptInvitation(invitation.GuestReservationId)">Accept</button>
+                <button ng-show="invitation.Status == 0"  ng-click="vm.DeclineInvitation(invitation.GuestReservationId)">Decline</button>
+            </li>
+        </ul>
+    </div>
     <br class="separator">
 </div>
 </div>

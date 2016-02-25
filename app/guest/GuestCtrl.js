@@ -81,6 +81,23 @@
             vm.ratingEditing = rating.RestaurantId;
         };
 
+        vm.AcceptInvitation = function(reservationId) {
+            vm.data.restCall.post("api/reservation/acceptinvitation", "'" + reservationId + "'", GenericSuccessCallback, GenericErrorCallback);
+            var i;
+            for (i = 0; i < vm.guest.ReservationInvitations.length; i++) {
+                if (vm.guest.ReservationInvitations[i].GuestReservationId == reservationId) {
+                    vm.guest.ReservationInvitations[i].Status = 1;
+                }
+            }
+        };
+
+        vm.DeclineInvitation = function(reservationId) {
+            vm.data.restCall.post("api/reservation/declineinvitation", "'" + reservationId + "'", GenericSuccessCallback, GenericErrorCallback);
+            vm.guest.ReservationInvitations = vm.guest.ReservationInvitations.filter(function (el) {
+                return el.GuestReservationId != reservationId;
+            });
+        };
+
         vm.Logout = function() {
             vm.login.logout();
         };
