@@ -57,11 +57,10 @@
             vm.sManagerToAdd = {
                 "Username" : manager.Name
             };
-            //call register method
+            vm.login.register(manager.Name, manager.Password, "SystemManager", RegisterSysManagerSuccessCallback, RegisterSysManagerErrorCallback);
             document.getElementById('managerName').value = "";
             document.getElementById('managerPass').value = "";
             document.getElementById('managerPassConf').value = "";
-            console.log(manager.Username + " added!");
         }
 
         vm.RemoveSysManager = function(manager) {
@@ -73,6 +72,7 @@
             }
             vm.sManagerToAdd = manager;
             //call unregister method
+            RemoveSysManagerSuccessCallback(null);
             console.log(manager.Username + " removed!");
         }
 
@@ -128,13 +128,13 @@
             vm.errorMessage = response.data.Message == null ? response.data : response.data.Message;
         }
 
-        /*function RemoveMealSuccessCallback(response) {
-            vm.Restaurant.Menu = vm.Restaurant.Menu.filter(function (el) {
-                return el.Name != vm.mealToAdd.Name;
+        function RemoveSysManagerSuccessCallback(response) {
+            vm.SystemManagers = vm.SystemManagers.filter(function (el) {
+                return el.Username != vm.sManagerToAdd.Username;
             });
         }
 
-        function RemoveMealErrorCallback(response) {
+        /*function RemoveMealErrorCallback(response) {
             vm.errorMessage = response.data.Message == null ? response.data : response.data.Message;
         }*/
     }

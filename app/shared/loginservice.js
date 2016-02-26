@@ -51,6 +51,26 @@
             });
         }
 
+        ls.register = function(username, password, role, successCB, errorCB) {
+            $http({
+                method: 'POST',
+                url: appSettings.authorizationServerPath + "api/account/register",
+                headers: {
+                    "Accept" : "application/json"
+                },
+                data: {
+                    "Username" : username,
+                    "Password" : password,
+                    "ApplicationId" : appSettings.clientId,
+                    "Role" : role
+                }
+            }).then(function successCallback(response) {
+                successCB(response);
+            }, function errorCallback(response) {
+                errorCB(response);
+            });
+        }
+
         ls.logout = function() {
             cookies.putItem("access_token", null);
             cookies.putItem("refresh_token", null);
