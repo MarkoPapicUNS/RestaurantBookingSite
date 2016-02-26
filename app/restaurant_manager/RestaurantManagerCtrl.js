@@ -72,6 +72,10 @@
             vm.data.restCall.delete("api/restaurant/removemeal/" + vm.Restaurant.RestaurantId + "/" + meal.Name , RemoveMealSuccessCallback, RemoveMealErrorCallback);
         }
 
+        vm.Logout = function() {
+            vm.login.logout();
+        };
+
         function GetManagerSuccessCallback(response) {
             vm.RestaurantManager = response.data;
             vm.data.restCall.get("api/restaurant/restaurant/" + vm.RestaurantManager.RestaurantId, GetRestaurantSuccessCallback, GetRestaurantErrorCallback);

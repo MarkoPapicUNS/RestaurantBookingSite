@@ -31,7 +31,7 @@
                 return;
                 break;
             case 'SystemManager':
-                vm.redirection.redirect("/systemManager");
+                vm.redirection.redirect("/systemmanager");
                 return;
                 break;
             default:

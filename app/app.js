@@ -12,7 +12,8 @@
         "app.guest",
         "app.restaurant",
         "app.reservation",
-        "app.restaurantmanager"
+        "app.restaurantmanager",
+        "app.systemmanager"
     ]);
 
     app.config(["$routeProvider",
@@ -49,6 +50,10 @@
             when("/restaurantmanager", {
                 templateUrl: "app/restaurant_manager/restaurantmanagerView.html",
                 controller: "RestaurantManagerCtrl"
+            }).
+            when("/systemmanager", {
+                templateUrl: "app/system/systemmanagerView.html",
+                controller: "SystemManagerCtrl"
             }).
             when("/login", {
                 templateUrl: "app/login/loginView.html",

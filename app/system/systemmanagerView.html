@@ -1,0 +1,21 @@
+<div ng-controller="SystemManagerCtrl as vm">
+    <div class="main_bar">
+        <a href="#/home">Home</a>
+        <button ng-click="vm.Logout()">Logout</button>
+    </div>
+    <h2>{{vm.SystemManager.Username}}</h2>
+    <div>
+        <label class="error_message">{{vm.loginErrorMessage}}</label>
+        <table>
+            <tr ng-repeat="sysManager in vm.SystemManagers">
+                <td><b>{{sysManager.Username}}</b></td>
+                <td><img src="../../assets/images/minus.png" ng-click="vm.RemoveSysManager(sysManager)" /></td>
+            </tr>
+        </table>
+        <h5>Add system manager</h5>
+        <label>Username: </label><input id="managerName" type="text"  ng-model="sManager.Name" >
+        <label>Password: </label><input id="managerPass" type="password"  ng-model="sManager.Password" >
+        <label>Confirm password: </label><input id="managerPassConf" type="password"  ng-model="sManager.PasswordConf" >
+        <img src="../../assets/images/plus.png" ng-click="vm.AddSysManager(sManager)" />
+    </div>
+</div>
